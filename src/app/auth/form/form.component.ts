@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ACTIONS } from 'src/app/shared/constants/login.constants';
-import { OptionsForm } from 'src/app/shared/interfaces/optionsLogin.interface';
+import { OptionsForm } from 'src/app/shared/interfaces/options-login.interface';
 import { AuthService } from '../services/auth.services';
 
 @Component({
@@ -31,15 +31,16 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('Salve');
-    this.authSvc.signUp(this.authForm.value);
+    // console.log(this.authForm.value,"value");
+    let res = this.authSvc.signUp(this.authForm.value);
+    console.log(res);
 
   }
 
   private initForm(): void {
     this.authForm = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      UserName: ['', Validators.required],
+      Password: ['', Validators.required],
 
     })
   }

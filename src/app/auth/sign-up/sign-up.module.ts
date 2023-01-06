@@ -15,5 +15,6 @@ import { FormModule } from 'src/app/auth/form/form.module';
     SignUpRoutingModule,
     FormModule
   ]
+
 })
 export class SignUpModule { }

@@ -1,63 +1,41 @@
 import { Injectable } from "@angular/core";
-import { SupabaseClient,Session , createClient, User, AuthApiError, UserAttributes, SignInWithPasswordCredentials, AuthError } from "@supabase/supabase-js";
 import { BehaviorSubject, Observable } from "rxjs";
-import { USER_STORAGE_KEY } from "src/app/shared/constants/login.constants";
-import { environment } from "src/enviroments/environment";
-
-type supabaseResponse = User | Session |AuthApiError | null;
+import { REGISTER_USER } from "src/app/shared/constants/endpoints.constants";
+import { userRegister } from "src/app/shared/interfaces/user-register.interface";
+import { RequestService } from "src/app/shared/services/request.service";
 
 
 @Injectable({providedIn: 'root'})
 
 export class AuthService  {
 
-  private supabaseClient: SupabaseClient;
-  private userSubject = new BehaviorSubject<User | null>(null);
+  constructor(
+    private requestService: RequestService
+  ) {
 
-  constructor() {
-    this.supabaseClient = createClient(environment.supabase.url, environment.supabase.url);
   }
 
-  get user$():Observable<User | null>{
-    return this.userSubject.asObservable();
+  async signIn(){
+
   }
 
-  async signIn(credentials: SignInWithPasswordCredentials): Promise <supabaseResponse> {
-    try {
-      const {data ,error, ...rest} = await this.supabaseClient.auth.signInWithPassword(credentials)
-      // TODO: SET USER
-      this.setUser();
-      console.log(data ,rest);
+  async signUp(body: userRegister) {
+    this.requestService.post(REGISTER_USER,body).subscribe(
+      (res:any)=>{
+        try {
+          console.log(res,"reees");
 
-      return data.user;
-    } catch (error) {
-      console.log(error);
-      return error as AuthApiError
-    }
+        } catch (error) {
+          console.log(error);
+
+        }
+      }
+    )
   }
 
-  async signUp(credentials: SignInWithPasswordCredentials): Promise <supabaseResponse> {
-    try {
-      const {data ,error, ...rest} = await this.supabaseClient.auth.signUp(credentials)
-      // TODO: SET USER
-      this.setUser();
-      console.log(data ,rest);
+  singOut(){
 
-      return data.user;
-    } catch (error) {
-      console.log(error);
-      return error as AuthApiError
-    }
   }
 
-  singOut(): Promise<{error: AuthError | null}> {
-    this.userSubject.next(null);
-    return this.supabaseClient.auth.signOut();
-  }
-
-  private setUser(): void {
-    const session = localStorage.getItem(USER_STORAGE_KEY) as unknown as User;
-    this.userSubject.next(session);
-  }
 
 }

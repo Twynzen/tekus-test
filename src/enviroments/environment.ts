@@ -4,10 +4,7 @@
 
 export const environment = {
   production: false,
-  supabase: {
-    publicKey:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppY3NqdHJjamx6Y2N4dHh5a2RkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzI3ODcwMTgsImV4cCI6MTk4ODM2MzAxOH0.eUuXJOl1GSONSrO5BOOPf6p6B-4ZinfMGX98tUGz-ws',
-    url: 'https://jicsjtrcjlzccxtxykdd.supabase.co'
-  }
+  url: 'https://lab.app.invertebrado.co/api/'
 };
 
 /*

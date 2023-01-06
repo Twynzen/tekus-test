@@ -15,6 +15,7 @@ import { FormComponent } from './form.component';
     RouterModule,
     ReactiveFormsModule,
   ],
-  exports: [FormComponent]
+  exports: [FormComponent],
+
 })
 export class FormModule { }

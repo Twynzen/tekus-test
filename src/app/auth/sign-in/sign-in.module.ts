@@ -13,6 +13,7 @@ import { FormModule } from '../form/form.module';
     CommonModule,
     SignInRoutingModule,
     FormModule
-  ]
+  ],
+
 })
 export class SignInModule { }

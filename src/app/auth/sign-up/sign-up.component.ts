@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ACTIONS } from 'src/app/shared/constants/login.constants';
-import { OptionsForm } from 'src/app/shared/interfaces/optionsLogin.interface';
+import { OptionsForm } from 'src/app/shared/interfaces/options-login.interface';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,4 +13,6 @@ export class SignUpComponent {
     id: ACTIONS.signUp,
     label: ACTIONS.signUp
   }
+
+
 }
