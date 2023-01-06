@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ACTIONS } from 'src/app/shared/constants/login.constants';
 import { OptionsForm } from 'src/app/shared/interfaces/options-login.interface';
 import { AuthService } from '../services/auth.services';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { SignInComponent } from '../sign-in/sign-in.component';
 
 @Component({
   selector: 'app-form',
@@ -15,6 +17,7 @@ export class FormComponent implements OnInit {
 
 
   @Input() options !: OptionsForm;
+  @BlockUI() blockUI!: NgBlockUI;
   authForm !: FormGroup;
   signIn = ACTIONS.signIn;
 
@@ -22,18 +25,30 @@ export class FormComponent implements OnInit {
     private readonly fb: FormBuilder,
     private readonly authSvc: AuthService
   ) {
-    this.options = { id: 'id por defecto' ,label: 'Label por defecto' };
+
+
+    this.options = { id: 'id por defecto', label: 'Label por defecto' };
   }
 
   ngOnInit(): void {
     this.initForm();
 
+
   }
 
   onSubmit(): void {
-    // console.log(this.authForm.value,"value");
-    let res = this.authSvc.signUp(this.authForm.value);
-    console.log(res);
+    switch (this.options.label) {
+      case "Sign Up": {
+        alert('Esta funcionalidad no esta disponible.');
+        break;
+      }
+      case "Sign In": {
+        let res = this.authSvc.signIn(this.authForm.value);
+        console.log(res);
+        break;
+      }
+
+    }
 
   }
 

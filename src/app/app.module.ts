@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BlockUIModule } from 'ng-block-ui';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { NavbarModule } from './shared/navbar/navbar.module';
 
 @NgModule({
@@ -11,13 +12,15 @@ import { NavbarModule } from './shared/navbar/navbar.module';
     AppComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     NavbarModule,
-    HttpClientModule
+    HttpClientModule,
+    BlockUIModule.forRoot(),
 
   ],
-  providers: [],
+  providers: [CommonModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

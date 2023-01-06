@@ -1,0 +1,32 @@
+<section>
+  <!-- <div *ngIf="accesToken === ''">
+    <div class="alert alert-warning text-center" role="alert">
+      <h4 class="alert-heading">Intenta iniciar sesión primero</h4>
+      <p>Antes de poder acceder a esta página, debes iniciar sesión en tu
+        cuenta.
+        Si aún no tienes una cuenta, puedes registrarte en el enlace debajo del
+        botón de inicio de sesión.</p>
+      <hr>
+      <p class="mb-0">¡Te esperamos!</p>
+    </div>
+
+  </div>
+  <div *ngIf="accesToken !== ''">
+    LOGEADO
+  </div> -->
+  <ng-container *ngIf="accesToken === '' else other" >
+     <div class="alert alert-warning text-center" role="alert">
+      <h4 class="alert-heading">Intenta iniciar sesión primero</h4>
+      <p>Antes de poder acceder a esta página, debes iniciar sesión en tu
+        cuenta.
+        Si aún no tienes una cuenta, puedes registrarte en el enlace debajo del
+        botón de inicio de sesión.</p>
+      <hr>
+      <p class="mb-0">¡Te esperamos!</p>
+    </div>
+    </ng-container>
+    <ng-template #other>
+      <p>LOGEADO</p>
+    </ng-template>
+
+</section>
