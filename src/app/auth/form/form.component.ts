@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ACTIONS } from 'src/app/shared/constants/login.constants';
 import { OptionsForm } from 'src/app/shared/interfaces/options-login.interface';
-import { AuthService } from '../services/auth.services';
+import { AuthService } from 'src/app/auth/services/auth-services.service';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { SignInComponent } from '../sign-in/sign-in.component';
 

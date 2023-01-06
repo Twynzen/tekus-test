@@ -6,29 +6,26 @@ import { userRegister } from "src/app/shared/interfaces/user-register.interface"
 import { RequestService } from "src/app/shared/services/request.service";
 
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 
-export class AuthService  {
+export class AuthService {
   @BlockUI() blockUI!: NgBlockUI;
   globalToken: any;
   globalTokenSubject: BehaviorSubject<string> = new BehaviorSubject<string>('')
 
 
-
   constructor(
     private requestService: RequestService,
   ) {
-
   }
 
-  async signUp(){
-
+  async signUp() {
   }
 
   async signIn(body: userRegister) {
     this.blockUI.start();
-    this.requestService.post(REGISTER_USER,body).subscribe(
-      (res:any)=>{
+    this.requestService.post(REGISTER_USER, body).subscribe(
+      (res: any) => {
         this.blockUI.stop();
         try {
           this.globalToken = res.Token;
@@ -45,7 +42,7 @@ export class AuthService  {
     return this.globalTokenSubject.asObservable();
   }
 
-  singOut(){
+  singOut() {
 
   }
 
