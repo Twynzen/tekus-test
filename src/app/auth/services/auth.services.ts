@@ -10,11 +10,13 @@ import { RequestService } from "src/app/shared/services/request.service";
 
 export class AuthService  {
   @BlockUI() blockUI!: NgBlockUI;
-  globalToken: string = '';
+  globalToken: any;
+  globalTokenSubject: BehaviorSubject<string> = new BehaviorSubject<string>('')
+
 
 
   constructor(
-    private requestService: RequestService
+    private requestService: RequestService,
   ) {
 
   }
@@ -29,15 +31,18 @@ export class AuthService  {
       (res:any)=>{
         this.blockUI.stop();
         try {
-          this.globalToken = res.token;
+          this.globalToken = res.Token;
+          this.globalTokenSubject.next(this.globalToken);
+
+
         } catch (error) {
           console.log(error);
         }
       }
     )
   }
-  getGlobalToken(){
-    return this.globalToken;
+  getGlobalTokenObservable() {
+    return this.globalTokenSubject.asObservable();
   }
 
   singOut(){

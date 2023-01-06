@@ -7,22 +7,34 @@ import { NgIf } from '@angular/common';
   templateUrl: './show-subscribed.component.html',
   styleUrls: ['./show-subscribed.component.scss']
 })
-export class ShowSubscribedComponent implements AfterViewInit{
+export class ShowSubscribedComponent implements OnInit{
   accesToken: string = '';
 
 
   constructor(
     private authService: AuthService
-  ){
-
+  ) {
 
   }
-  ngAfterViewInit() {
-    this.getAccesToken();
+
+  ngOnInit(): void {
+
+   this.getToken();
+
   }
 
-  getAccesToken(){
-   this.accesToken = this.authService.getGlobalToken();
+
+
+  async getToken(){
+  this.authService.getGlobalTokenObservable().subscribe(token => {
+    this.accesToken = token;
+    console.log(this.accesToken,"token");
+
+  });
   }
+
+
+
+
 
 }

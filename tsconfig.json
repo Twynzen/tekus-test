@@ -2,6 +2,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "@show-subscribed/*":["src/app/pages/show-subscribed/*"],
+      "@auth/*":["src/app/auth/*"],
+      "@shared/*":["src/app/shared/*"],
+      "@env/*":["src/environment/*"],
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
