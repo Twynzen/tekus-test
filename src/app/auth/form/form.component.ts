@@ -43,8 +43,9 @@ export class FormComponent implements OnInit {
         break;
       }
       case "Sign In": {
-        let res = this.authSvc.signIn(this.authForm.value);
-        console.log(res);
+        this.authSvc.signIn(this.authForm.value);
+        console.log(localStorage.getItem('globalToken'));
+
         break;
       }
 

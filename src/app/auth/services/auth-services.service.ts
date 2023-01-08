@@ -14,6 +14,7 @@ export class AuthService {
   globalTokenSubject: BehaviorSubject<string> = new BehaviorSubject<string>('')
 
 
+
   constructor(
     private requestService: RequestService,
   ) {
@@ -28,8 +29,12 @@ export class AuthService {
       (res: any) => {
         this.blockUI.stop();
         try {
-          this.globalToken = res.Token;
-          this.globalTokenSubject.next(this.globalToken);
+          if (res.Token) {
+            this.globalToken = res.Token;
+            localStorage.setItem('globalToken', this.globalToken);
+            this.globalTokenSubject.next(this.globalToken);
+          }
+
 
 
         } catch (error) {

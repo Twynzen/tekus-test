@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/auth/services/auth-services.service';
-import { NgIf } from '@angular/common';
+import {  Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-show-subscribed',
@@ -8,29 +7,13 @@ import { NgIf } from '@angular/common';
   styleUrls: ['./show-subscribed.component.scss']
 })
 export class ShowSubscribedComponent implements OnInit{
-  accesToken: string = '';
 
-
-  constructor(
-    private authService: AuthService
-  ) {
-
+  constructor() {
   }
 
   ngOnInit(): void {
-   this.getToken();
+
   }
-
-  async getToken(){
-  this.authService.getGlobalTokenObservable().subscribe((token: string) => {
-    this.accesToken = token;
-    console.log(this.accesToken,"token");
-
-  });
-  }
-
-
-
 
 
 }
