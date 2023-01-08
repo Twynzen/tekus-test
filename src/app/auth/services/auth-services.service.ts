@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { BlockUI, NgBlockUI } from "ng-block-ui";
 import { BehaviorSubject, Observable } from "rxjs";
 import { REGISTER_USER } from "src/app/shared/constants/endpoints.constants";
@@ -17,6 +18,8 @@ export class AuthService {
 
   constructor(
     private requestService: RequestService,
+    private router: Router
+
   ) {
   }
 
@@ -33,9 +36,8 @@ export class AuthService {
             this.globalToken = res.Token;
             localStorage.setItem('globalToken', this.globalToken);
             this.globalTokenSubject.next(this.globalToken);
+            this.router.navigate(['/show-subscribed']);
           }
-
-
 
         } catch (error) {
           console.log(error);

@@ -1,27 +1,36 @@
-# TekusTest
+# Módulo de autenticación
+* Este módulo se encarga de manejar la autenticación del usuario en la aplicación. Se compone de las siguientes carpetas:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.3.
+> directives: contiene las directivas creadas especialmente para la autenticación del usuario al iniciar sesión.
 
-## Development server
+> form: tiene un formulario reutilizable de registro e inicio de sesión que son utilizados por los módulos de sign-in y sign-up dependiendo del caso de uso.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+> services: incluye los servicios de autenticación para validar el inicio de sesión y un interceptor para obtener el token y guardarlo en los headers.
 
-## Code scaffolding
+# Modulo de paginas
+*El módulo Pages contiene el componente show-subscribed, el cual muestra los datos de la API una vez se hayan gestionado los consumos correspondientes. En el futuro, este módulo podría incluir más componentes que muestren diferentes tipos de información obtenida de la API.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Módulo shared
+* Este módulo tiene varios archivos compartidos de en todo el proyecto e incluye:
 
-## Build
+> Carpeta CONSTANTS: almacena acciones de movimiento para las rutas y los endpoints de la API.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+> Carpeta INTERFACES: organiza la data a consumir y mostrar.
 
-## Running unit tests
+> Carpeta NAVBAR: barra de navegación transversal para moverse en las rutas.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+>Carpeta SERVICES: contiene el request.service, encargado de manejar y administrar las peticiones HTTP realizadas.
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# RUTAS Archivo AppRoutingModule
+
+* '': redirige a '/show-subscribed', con una coincidencia de ruta completa.
+* 'show-subscribed': carga el módulo ShowSubscribedModule mediante lazy loading y se aplican los guardias de activación y desactivación PermissionsGuard y ExitGuard.
+* 'sign-in': carga el módulo SignInModule mediante lazy loading.
+* 'sign-up': carga el módulo SignUpModule mediante lazy loading.
+* '**': redirige a '/show-subscribed', con una coincidencia de ruta completa.
+
+# ¿Quieres probar el proyecto?
+* El proyecto acualmente se puede clonar y probar directamente con ng serve de forma local
